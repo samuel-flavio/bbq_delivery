@@ -1,0 +1,7 @@
+<p id="notice"><%= notice %></p>
+<h1>Novo Cliente</h1>
+<% if policy(@cliente).new? %>
+    <%= render 'form', cliente: @cliente %>
+<% end %>
+
+<%= link_to 'Voltar', root_path %>
