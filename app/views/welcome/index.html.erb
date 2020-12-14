@@ -1,0 +1,50 @@
+<p id="notice"><%= notice%></p>
+
+<div class="caixa">
+    <h1>Página Principal</h1>
+    <% if user_signed_in? %>
+        <ul>
+            <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+        </ul>
+    <% else%>
+        <ul>
+            <li><%= link_to "Cadastre-se Aqui", new_user_registration_path %></li>
+            <li><%= link_to "Log In", new_user_session_path %></li>
+        </ul>
+    <% end %>
+</div>
+
+<div class="navbar-form navbar-right">
+    <%= form_tag busca_produto_path, method: :post, class:"navbar-form navbar-right" do %>
+        <div class="form-group">
+            <%= text_field_tag :nome, @nome, class:"form-control" %>
+            <%= button_to "Pesquisar", nil, class:"btn btn-default" %>
+        </div>
+    <% end %>
+</div>
+
+<h2>Nossos Produtos</h2>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <td colspan="1"></td>
+            <td>Nome</td>
+            <td>Descrição</td>
+            <td>Departamento</td>
+            <td>Preço</td>
+            <td colspan="1"></td>
+        </tr>
+    </thead>
+    <tbody>
+        <% @produtos.each do |produto|%>
+            <tr>
+                <td><%= image_tag(produto.image, class:"imagens") if produto.image.attached? %></td>
+                <td><%= produto.nome %></td>
+                <td><%= produto.descricao %></td>
+                <td><%= produto.departamento.nome %></td>
+                <td><%= sprintf("R$%0.01f", produto.preco) %></td>
+                <td><%= button_to 'Adicionar ao Carrinho', line_items_path(produto_id: produto), class:"btn btn-default" %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
