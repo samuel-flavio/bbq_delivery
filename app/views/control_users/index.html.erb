@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+<h1>Usuários Cadastrados</h1>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Usuários</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr >
+        <td><%= user.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
