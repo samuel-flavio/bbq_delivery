@@ -1,0 +1,48 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ #Marca {
+    display: inline-block;
+    font-family: Helvetica;
+    color: red;
+    font-size 100px;
+ }
+ #teste { 
+    color:aquamarine;
+ }
+
+.imagens {
+    width: 150px;
+    height: 200px;
+}
+ body {
+     background-image: url("Imagem2.png");
+     background-repeat: no-repeat;
+     background-size: cover;
+ }
+
+ .caixa {
+     padding: 20px;
+     background-color: white;
+     width: 100%;
+ }
+ footer {
+     padding: 20px;
+     font-weight: bold;
+ }
+
+ thead {
+     font-weight: bold;
+ }
