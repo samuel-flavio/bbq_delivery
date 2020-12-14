@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bbq</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= image_tag("Imagem1.png") %> 
+    <%= image_tag("bbq.png") %>
+    <div class="caixa">
+      
+      <%= nav_bar brand: "Home", brand_link: root_url do %>
+        <%= menu_group do %>
+          <%= menu_item "Departamentos", departamentos_path %>
+          <%= menu_item 'Nossos Produtos', produtos_path %>
+          <%= menu_item 'Fale Conosco', fale_conosco_path %>
+          
+
+    
+        <% end %>
+        
+      <% end %>
+      <div class="container">
+      
+        <%= yield %>
+        
+      </div>
+    </div>
+    <footer>
+      <p class="footer-copyright text-center py-4">&copy; Copyright BBQ Delivery - 2020</p>
+    </footer>
+  </body>
+
+</html>
