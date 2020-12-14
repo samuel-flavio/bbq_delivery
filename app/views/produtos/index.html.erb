@@ -1,0 +1,35 @@
+<div class="alert alert-info" role="alert">
+    <h4 class="alert-heading">Nossos Produtos</h4>
+</div>
+
+<% if policy(@produtos).index?%>
+    <table>
+        <thead>
+            <td>Menu Admin</td>
+            <td colspan="4"></td>
+        </thead>    
+        <tbody>
+            <td colspan="1"></td>
+            <td><%= link_to "Clientes", clientes_path, class:"btn btn-default" %></td>
+            <td><%= link_to "Produtos", produtos_path, class:"btn btn-default" %></td>
+            <td><%= link_to "Usuários", control_users_index_path, class:"btn btn-default" %></td>
+            <td><%= link_to "Cadastro de Produtos", new_produto_path, class:"btn btn-default" %></td>
+            <td><%= link_to 'Novo Cliente', new_cliente_path, class:"btn btn-default" %></td>
+        </tbody>
+    </table>
+
+    <div class="navbar-form navbar-right">
+        <%= form_tag busca_produto_path, method: :post, class:"navbar-form navbar-right" do %>
+            <div class="form-group">
+                <%= text_field_tag :nome, @nome, class:"form-control" %>
+                <%= button_to "Pesquisar", nil, class:"btn btn-default" %>
+            </div>
+        <% end %>
+    </div>
+
+    <%= render partial: "admin_index" %>
+
+<% else %>
+    
+<% end %>
+<%= link_to 'Voltar', root_path %>
