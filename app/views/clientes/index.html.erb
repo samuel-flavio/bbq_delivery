@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<div class="alert alert-info" role="alert">
+    <h4 class="alert-heading">Nossos Clientes</h4>
+</div>
+
+<div class="navbar-form navbar-right">
+    <%= form_tag(clientes_path, :method => :get) do %>
+        <div class="form-group">
+            <%= text_field_tag 'pesquisar', nil, class:"form-control", placeholder:"Pesquisa pelo nome:" %>
+            <%= submit_tag "Pesquisar", class:"btn btn-default" %>
+        </div>
+    <% end %>
+</div>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Endereco</th>
+      <th>Complemento</th>
+      <th>Bairro</th>
+      <th>Cep</th>
+      <th>Contato</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @clientes.each do |cliente| %>
+      <tr>
+        <td><%= cliente.nome %></td>
+        <td><%= cliente.email %></td>
+        <td><%= cliente.endereco %></td>
+        <td><%= cliente.complemento %></td>
+        <td><%= cliente.bairro %></td>
+        <td><%= cliente.cep %></td>
+        <td><%= cliente.contato %></td>
+        <td><%= link_to "Editar", edit_cliente_path(cliente), class:"btn btn-default" %></td>
+        <td><%= button_to  "Remover", cliente, method: :delete, class:"btn btn-danger", data: {confirm:"Tem certeza que deseja remover o produto #{cliente.nome}?"} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Voltar', clientes_path %>
