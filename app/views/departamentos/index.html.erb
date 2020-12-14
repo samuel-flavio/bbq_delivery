@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+<h1>Departamentos</h1>
+
+<% if policy(@departamentos).index? %>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @departamentos.each do |departamento| %>
+        <tr >
+          <td><%= departamento.nome %></td>
+          <td><%= link_to 'Ver Produtos', departamento, class:"btn btn-default" %></td>
+          <td><%= link_to 'Editar Departamento', edit_departamento_path(departamento), class:"btn btn-default" %></td>
+          <td><%= link_to 'Excluir Departamento', departamento, method: :delete, data: { confirm: 'Você tem certeza que deseja excluir esse departamento?' }, class:"btn btn-default" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to 'Novo Departamento', new_departamento_path, class:"btn btn-default" %>
+  
+<% else %>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th colspan="1"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @departamentos.each do |departamento| %>
+        <tr >
+          <td><%= departamento.nome %></td>
+          <td><%= link_to 'Ver Produtos', departamento, class:"btn btn-default" %></td> 
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+
