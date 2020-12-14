@@ -1,0 +1,3 @@
+<% if policy(@produto).new? %>
+    <%= render partial: "formulario", locals: { acao: "Criar" } %>
+<% end %>
