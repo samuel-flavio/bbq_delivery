@@ -1,0 +1,29 @@
+<p id="notice" ><%= notice %></p>
+
+<h2>Seu carrinho</h2>
+<table>
+    <% @carrinho.line_items.each do |item| %>
+        <tr>
+            <div class="row g-3">
+                <div class="col-auto">
+                    <td class="visually-hidden"><%= item.quantity %></td>
+                    <td><%= item.produto.nome %></td>
+                    <td class="form-control-plaintext"><%= sprintf("R$%0.02f", item.total_preco) %></td>
+                </div>
+            </div>
+        </tr>
+     <% end %>
+    <tfoot>
+        <tr>
+            <div class="row g-3">
+                <div class="col-auto">
+                    <th colspan="2">Total:</th>
+                    <th class="form-control-plaintext"><%= sprintf("R$%0.02f", @carrinho.total_preco) %></td>
+                </div>
+            </div>
+        </tr>
+    </tfoot>
+</table>    
+
+<%= button_to 'Esvaziar carrinho', @carrinho, method: :delete, data: { confirm: 'Está certo que deseja deletar o carrinho?' } %>
+<%= link_to 'Voltar', carrinhos_path %>
